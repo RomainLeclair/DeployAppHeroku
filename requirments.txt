@@ -1,0 +1,8 @@
+sklearn
+fastapi
+pandas
+pydantic
+tensorflow
+uvicorn
+h5py
+python-multipart
