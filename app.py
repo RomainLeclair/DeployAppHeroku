@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from pydantic import BaseModel
 from fastapi import FastAPI, Form
 from starlette.responses import HTMLResponse
 from tensorflow.keras.preprocessing.text import Tokenizer
@@ -10,6 +11,10 @@ import re
 data = pd.read_csv('Sentiment.csv')
 tokenizer = Tokenizer(num_words=2000, split=' ')
 tokenizer.fit_on_texts(data['text'].values)
+
+class inputToModel(BaseModel):
+    text:str
+
 
 def preProcess_data(text):
     text = text.lower()
