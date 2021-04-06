@@ -6,6 +6,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import tensorflow as tf
 import re
+from pydantic import BaseModel
 
 data = pd.read_csv('Sentiment.csv')
 tokenizer = Tokenizer(num_words=2000, split=' ')
@@ -29,6 +30,10 @@ def my_pipeline(text):
 
 
 app = FastAPI()
+
+
+class inputToModel(BaseModel):
+    text:str
 
 @app.get('/')
 def basic_view():
